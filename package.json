@@ -1,0 +1,31 @@
+{
+  "name": "kentbeck-tdd",
+  "version": "1.0.0",
+  "description": "An attempt the follow the examples put forward by Kent Beck in his book Test-Driven Development",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-fearn/kentbeck-tdd.git"
+  },
+  "keywords": [
+    "kent",
+    "beck",
+    "tdd",
+    "typescript"
+  ],
+  "author": "Michael Fearn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michael-fearn/kentbeck-tdd/issues"
+  },
+  "homepage": "https://github.com/michael-fearn/kentbeck-tdd#readme",
+  "dependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.4.0",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
+  }
+}
