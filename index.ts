@@ -1,29 +1,29 @@
-export class Dollar {
-  private amount = 0;
-
+class Money {
+  protected amount: number;
   constructor(amount: number) {
     this.amount = amount;
   }
-  public times(multiplier: number) {
-    return new Dollar(this.amount * multiplier);
-  }
 
-  public equals(dollar: Dollar) {
-    return this.amount == dollar.amount;
+  public equals(money: Money): boolean {
+    return this.amount == money.amount;
   }
 }
 
-export class Franc {
-  private amount = 0;
-
+export class Dollar extends Money {
   constructor(amount: number) {
-    this.amount = amount;
+    super(amount);
+  }
+
+  public times(multiplier: number) {
+    return new Dollar(this.amount * multiplier);
+  }
+}
+
+export class Franc extends Money {
+  constructor(amount: number) {
+    super(amount);
   }
   public times(multiplier: number) {
     return new Franc(this.amount * multiplier);
-  }
-
-  public equals(franc: Franc) {
-    return this.amount == franc.amount;
   }
 }
