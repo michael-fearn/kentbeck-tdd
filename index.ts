@@ -1,5 +1,5 @@
 export class Money implements Expression {
-  protected amount: number;
+  public readonly amount: number;
   protected _currency: string;
   constructor(amount: number, currency: string) {
     this.amount = amount;
@@ -26,14 +26,34 @@ export class Money implements Expression {
   }
 
   plus(addend: Money): Expression {
-    return new Money(this.amount + addend.amount, this.currency());
+    return new Sum(this, addend);
+  }
+
+  reduce(to: string): Money {
+    return this;
   }
 }
 
-interface Expression {}
+interface Expression {
+  reduce(to: string): Money;
+}
 
 export class Bank {
-  reduce(source: Expression, to: string) {
-    return Money.dollar(10);
+  reduce(source: Expression, to: string): Money {
+    return source.reduce(to);
+  }
+}
+
+export class Sum implements Expression {
+  augend: Money;
+  addend: Money;
+  constructor(augend: Money, addend: Money) {
+    this.augend = augend;
+    this.addend = addend;
+  }
+
+  public reduce(to: string) {
+    const amount = this.augend.amount + this.addend.amount;
+    return new Money(amount, to);
   }
 }
